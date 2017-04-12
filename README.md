@@ -1,1 +1,37 @@
 # composeNS
+composeNS is namespaced compose function that can be used with recompose to avoid prop name collision. 
+
+## Usage
+
+#### Usage with namespaced component
+
+```js
+import ReactDOM from 'react-dom'
+import { withProps } from 'recompose';
+import composeNS from 'composens';
+
+const App = composeNS(
+  'foo',
+  withProps({ foo: 2 })
+)((props) => <h1>foo: {JSON.stringify(props)}</h1>);
+
+ReactDom.render(<App />, document.querySelector('#container'));
+```
+
+#### Usage to namespace a portion a group of HOC
+
+```js
+import ReactDOM from 'react-dom'
+import { compose, withProps } from 'recompose';
+import composeNS from 'composens';
+
+const App = compose(
+  withProps({ foo: 24601 }),
+  composeNS(
+    'bar',
+    withProps({ bar: 3 })
+  )
+)((props) => <h1>props: {JSON.stringify(props)}</h1>);
+
+ReactDom.render(<App />, document.querySelector('#container'));
+```
