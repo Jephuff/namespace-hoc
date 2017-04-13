@@ -11,9 +11,9 @@ import { withProps } from 'recompose';
 import composeNS from 'composens';
 
 const App = composeNS(
-  'foo',
-  withProps({ foo: 2 })
-)((props) => <h1>foo: {JSON.stringify(props)}</h1>);
+  'fooNamespace',
+  withProps({ foo: 24601 })
+)((props) => <div>foo: {props.fooNamespace.foo}</div>);
 
 ReactDom.render(<App />, document.querySelector('#container'));
 ```
@@ -22,16 +22,17 @@ ReactDom.render(<App />, document.querySelector('#container'));
 
 ```js
 import ReactDOM from 'react-dom'
-import { compose, withProps } from 'recompose';
+import { compose, withProps, mapProps } from 'recompose';
 import composeNS from 'composens';
 
 const App = compose(
-  withProps({ foo: 24601 }),
+  withProps({ bar: 1 }),
   composeNS(
-    'bar',
-    withProps({ bar: 3 })
+    'fooNamespace',
+    withProps({ foo: 24601 }),
+    mapProps(props => ({ parentBar: props.parentProps.bar })) // you can still access props passed in with the parentProps object.
   )
-)((props) => <h1>props: {JSON.stringify(props)}</h1>);
+)((props) => <div>foo: {props.fooNamespace.foo} bar: {props.bar}</div>);
 
 ReactDom.render(<App />, document.querySelector('#container'));
 ```
