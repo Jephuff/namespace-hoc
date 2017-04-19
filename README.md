@@ -1,4 +1,8 @@
 # composeNS
+
+> Namespaces are one honking great idea -- let's
+do more of those!
+
 composeNS is namespaced compose function that can be used with recompose to avoid prop name collision. 
 
 ## Usage
