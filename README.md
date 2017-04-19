@@ -11,6 +11,14 @@ composeNS is namespaced compose function that can be used with recompose to avoi
 
 ## Usage
 
+```js
+compose(
+  namespace: string,
+  propMap?: Array<string> | Object,
+  ...functions: Array<Function>,
+): Function
+```
+
 #### Usage with namespaced component
 
 ```js
@@ -37,8 +45,9 @@ const App = compose(
   withProps({ bar: 1 }),
   composeNS(
     'fooNamespace',
+    ['bar'], // you can still access props passed in using a second argument that is a array of props you want passed in, or an object `{ key: alias }`
     withProps({ foo: 24601 }),
-    mapProps(props => ({ parentBar: props.parentProps.bar })) // you can still access props passed in with the parentProps object.
+    mapProps(props => ({ parentBar: props.bar })) 
   )
 )((props) => <div>foo: {props.fooNamespace.foo} bar: {props.bar}</div>);
 
