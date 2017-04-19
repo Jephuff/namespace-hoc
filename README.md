@@ -27,9 +27,9 @@ import { withProps } from 'recompose';
 import composeNS from 'composens';
 
 const App = composeNS(
-  'fooNamespace',
-  withProps({ foo: 24601 })
-)((props) => <div>foo: {props.fooNamespace.foo}</div>);
+  'toulon',
+  withProps({ prisoner: 24601 })
+)((props) => <div>prisoner: {props.toulon.prisoner}</div>);
 
 ReactDom.render(<App />, document.querySelector('#container'));
 ```
@@ -42,14 +42,13 @@ import { compose, withProps, mapProps } from 'recompose';
 import composeNS from 'composens';
 
 const App = compose(
-  withProps({ bar: 1 }),
+  withProps({ location: 'france' }),
   composeNS(
-    'fooNamespace',
-    ['bar'], // you can still access props passed in using a second argument that is a array of props you want passed in, or an object `{ key: alias }`
-    withProps({ foo: 24601 }),
-    mapProps(props => ({ parentBar: props.bar })) 
+    'toulon',
+    ['location'], // you can still access props passed in using a second argument that is a array of props you want passed in, or an object `{ key: alias }`
+    withProps({ prisoner: 24601 }),
   )
-)((props) => <div>foo: {props.fooNamespace.foo} bar: {props.bar}</div>);
+)((props) => <div>prisoner: {props.toulon.prisoner} bar: {props.bar}</div>);
 
 ReactDom.render(<App />, document.querySelector('#container'));
 ```
