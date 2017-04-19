@@ -5,6 +5,10 @@ do more of those!
 
 composeNS is namespaced compose function that can be used with recompose to avoid prop name collision. 
 
+[![build status](https://img.shields.io/travis/Jephuff/composeNS/master.svg?style=flat-square)](https://travis-ci.org/Jephuff/composeNS)
+[![npm version](https://img.shields.io/npm/v/composens.svg?style=flat-square)](https://www.npmjs.com/package/composens)
+[![npm downloads](https://img.shields.io/npm/dm/composens.svg?style=flat-square)](https://www.npmjs.com/package/composens)
+
 ## Usage
 
 #### Usage with namespaced component
