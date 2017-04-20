@@ -37,7 +37,7 @@
   "author": "Jeffrey Burt",
   "license": "ISC",
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0"
+    "recompose": "^0.23.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
