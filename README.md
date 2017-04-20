@@ -1,7 +1,6 @@
 # composeNS
 
-> Namespaces are one honking great idea -- let's
-do more of those!
+> Namespaces are one honking great idea -- let's do more of those!
 
 composeNS is namespaced compose function that can be used with recompose to avoid prop name collision. 
 
@@ -13,42 +12,29 @@ composeNS is namespaced compose function that can be used with recompose to avoi
 
 ```js
 compose(
-  namespace: string,
-  propMap?: Array<string> | Object,
+  opts: string | { namespace: string, propMap: Array<string> | { [string]: string } },
   ...functions: Array<Function>,
 ): Function
 ```
 
-#### Usage with namespaced component
+#### Usage to namespace a portion of a group of HOC
 
 ```js
 import ReactDOM from 'react-dom'
-import { withProps } from 'recompose';
-import composeNS from 'composens';
-
-const App = composeNS(
-  'toulon',
-  withProps({ prisoner: 24601 })
-)((props) => <div>prisoner: {props.toulon.prisoner}</div>);
-
-ReactDom.render(<App />, document.querySelector('#container'));
-```
-
-#### Usage to namespace a portion a group of HOC
-
-```js
-import ReactDOM from 'react-dom'
-import { compose, withProps, mapProps } from 'recompose';
+import { compose, withProps, mapProps, withState } from 'recompose';
 import composeNS from 'composens';
 
 const App = compose(
-  withProps({ location: 'france' }),
+  withState('state', 'setState', { location: 'france' }),
   composeNS(
-    'toulon',
-    ['location'], // you can still access props passed in using a second argument that is a array of props you want passed in, or an object `{ key: alias }`
-    withProps({ prisoner: 24601 }),
+    {
+      namespace: 'toulon',
+      propMap: { 'state': 'parentState' }, // you can still access props passed in using a the propMap option that is a array of props you want passed in, or an object `{ key: alias }`
+    },
+    withState('state', 'setState', { prisoner: 24601 })
+    mapProps(props => ({ description: `location: ${props.parentState.location}, prisoner: ${props.state.prisoner}` }))
   )
-)((props) => <div>prisoner: {props.toulon.prisoner} bar: {props.bar}</div>);
+)((props) => <div>description: {props.toulon.description}</div>);
 
 ReactDom.render(<App />, document.querySelector('#container'));
 ```

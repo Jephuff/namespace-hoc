@@ -12,10 +12,10 @@ function getParentMap(mapOpt) {
   return [];
 }
 
-export default function composeNS(ns, ...args) {
-  const hasParentMap = Array.isArray(args[0]) || typeof args[0] === 'object';
-  const parentMap = getParentMap(hasParentMap && args[0]);
-  const funcs = hasParentMap ? args.slice(1) : args;
+export default function composeNS(args, ...funcs) {
+  const opts = typeof args === 'string' ? { namespace: args } : args;
+  const ns = opts.namespace;
+  const parentMap = getParentMap(opts.propMap);
 
   if (funcs.length === 0) return arg => arg;
 
