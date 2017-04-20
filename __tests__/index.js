@@ -63,8 +63,10 @@ test('composeNS parentMap passed in specified props', () => {
   const StateContainer = compose(
     withState('state', 'setState', { num: 5 }),
     composeNS(
-      'namespace',
-      ['state'],
+      {
+        namespace: 'namespace',
+        propMap: ['state'],
+      },
       mapProps(props => ({
         ...props,
         num: props.state.num * 10,
@@ -120,9 +122,11 @@ test('composeNS parentMap uses aliases', () => {
   const StateContainer = compose(
     withState('state', 'setState', { num: 5 }),
     composeNS(
-      'namespace',
       {
-        state: 'parentState',
+        namespace: 'namespace',
+        propMap: { 
+          state: 'parentState',
+        },
       },
       mapProps(({ parentState = {}, ...props }) => ({
         ...props,
