@@ -1,1 +1,1 @@
-window.composeNS = require('./index.js').default;
+window.namespaceHOC = require('./index.js').default;

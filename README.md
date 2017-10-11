@@ -1,12 +1,12 @@
-# composeNS
+# namespace-hoc
 
 > Namespaces are one honking great idea -- let's do more of those!
 
-composeNS is namespaced compose function that can be used with recompose to avoid prop name collision. 
+namespace-hoc is namespaced compose function that can be used with recompose to avoid prop name collision. 
 
-[![build status](https://img.shields.io/travis/Jephuff/composeNS/master.svg?style=flat-square)](https://travis-ci.org/Jephuff/composeNS)
-[![npm version](https://img.shields.io/npm/v/composens.svg?style=flat-square)](https://www.npmjs.com/package/composens)
-[![npm downloads](https://img.shields.io/npm/dm/composens.svg?style=flat-square)](https://www.npmjs.com/package/composens)
+[![build status](https://img.shields.io/travis/Jephuff/namespace-hoc/master.svg?style=flat-square)](https://travis-ci.org/Jephuff/namespace-hoc)
+[![npm version](https://img.shields.io/npm/v/namespace-hoc.svg?style=flat-square)](https://www.npmjs.com/package/namespace-hoc)
+[![npm downloads](https://img.shields.io/npm/dm/namespace-hoc.svg?style=flat-square)](https://www.npmjs.com/package/namespace-hoc)
 
 ## Usage
 
@@ -22,11 +22,11 @@ compose(
 ```js
 import ReactDOM from 'react-dom'
 import { compose, withProps, mapProps, withState } from 'recompose';
-import composeNS from 'composens';
+import namespace from 'namespace-hoc';
 
 const App = compose(
   withState('state', 'setState', { location: 'france' }),
-  composeNS(
+  namespace(
     {
       namespace: 'toulon',
       propMap: { 'state': 'parentState' }, // you can still access props passed in using a the propMap option that is a array of props you want passed in, or an object `{ key: alias }`

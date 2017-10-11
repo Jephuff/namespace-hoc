@@ -1,5 +1,5 @@
 {
-  "name": "composens",
+  "name": "namespace-hoc",
   "version": "1.0.3",
   "description": "A name spaced compose function to avoid prop collision",
   "main": "dist/index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "Jephuff/composeNS"
+    "url": "Jephuff/namespace-hoc"
   },
   "babel": {
     "presets": [

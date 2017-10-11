@@ -2,15 +2,15 @@ import React from 'react';
 import { mapProps, withState, compose } from 'recompose'
 import { mount } from 'enzyme'
 import sinon from 'sinon'
-import composeNS from '../src/index.js'
+import namespace from '../src/index.js'
 
-test('composeNS doesn\'t collide with parent props', () => {
+test('namespace-hoc doesn\'t collide with parent props', () => {
   const component = sinon.spy(() => null)
   component.displayName = 'component'
 
   const StateContainer = compose(
     withState('state', 'setState', { init: true }),
-    composeNS(
+    namespace(
       'namespace',
       withState('state', 'setState', { namespace: 'namespace' })
     ),
@@ -31,13 +31,13 @@ test('composeNS doesn\'t collide with parent props', () => {
   expect(component.secondCall.args[0].state.init).toBe(true)
 })
 
-test('composeNS props are available', () => {
+test('namespace-hoc props are available', () => {
   const component = sinon.spy(() => null)
   component.displayName = 'component'
 
   const StateContainer = compose(
     withState('state', 'setState', { init: true }),
-    composeNS(
+    namespace(
       'namespace',
       withState('state', 'setState', { namespace: 'namespace' })
     ),
@@ -56,13 +56,13 @@ test('composeNS props are available', () => {
   expect(component.secondCall.args[0].namespace.state.namespace).toBe('namespace')
 })
 
-test('composeNS parentMap passed in specified props', () => {
+test('namespace-hoc parentMap passed in specified props', () => {
   const component = sinon.spy(() => null)
   component.displayName = 'component'
 
   const StateContainer = compose(
     withState('state', 'setState', { num: 5 }),
-    composeNS(
+    namespace(
       {
         namespace: 'namespace',
         propMap: ['state'],
@@ -87,13 +87,13 @@ test('composeNS parentMap passed in specified props', () => {
   expect(component.secondCall.args[0].namespace.num).toBe(20)
 })
 
-test('composeNS parentMap does not pass in unspecified props', () => {
+test('namespace-hoc parentMap does not pass in unspecified props', () => {
   const component = sinon.spy(() => null)
   component.displayName = 'component'
 
   const StateContainer = compose(
     withState('state', 'setState', { num: 5 }),
-    composeNS(
+    namespace(
       'namespace',
       mapProps(({ state = {}, ...props }) => ({
         ...props,
@@ -115,13 +115,13 @@ test('composeNS parentMap does not pass in unspecified props', () => {
   expect(component.secondCall.args[0].namespace.num).toBe(undefined)
 })
 
-test('composeNS parentMap uses aliases', () => {
+test('namespace-hoc parentMap uses aliases', () => {
   const component = sinon.spy(() => null)
   component.displayName = 'component'
 
   const StateContainer = compose(
     withState('state', 'setState', { num: 5 }),
-    composeNS(
+    namespace(
       {
         namespace: 'namespace',
         propMap: { 
