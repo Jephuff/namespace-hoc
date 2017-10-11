@@ -1,6 +1,6 @@
 import { compose, mapProps, withProps } from 'recompose';
 
-const parentKey = '__parent_props__'; // If React adds support for Symbol props, this can be switched to use them.
+export const parentKey = '__parent_props__'; // If React adds support for Symbol props, this can be switched to use them.
 
 function getParentMap(mapOpt) {
   if (Array.isArray(mapOpt)) {
