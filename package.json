@@ -1,6 +1,6 @@
 {
   "name": "composens",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A name spaced compose function to avoid prop collision",
   "main": "dist/index.js",
   "scripts": {
