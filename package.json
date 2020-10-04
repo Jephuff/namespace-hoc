@@ -14,9 +14,8 @@
   },
   "babel": {
     "presets": [
-      "stage-0",
-      "latest",
-      "react"
+      "@babel/preset-env",
+      "@babel/preset-react"
     ]
   },
   "browserify": {
@@ -40,19 +39,19 @@
     "recompose": "^0.23.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-jest": "^19.0.0",
-    "babel-preset-latest": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
-    "babelify": "^7.3.0",
-    "browserify": "^14.3.0",
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-jest": "^26.3.0",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.2",
     "enzyme": "^2.8.2",
-    "jest": "^19.0.2",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-test-renderer": "^15.5.4",
-    "recompose": "^0.23.1",
-    "sinon": "^2.1.0"
+    "jest": "^26.4.2",
+    "react-dom": "15.x",
+    "react-test-renderer": "15.x",
+    "react": "15.x",
+    "recompose": "^0.30.0",
+    "sinon": "^9.1.0"
   }
 }
